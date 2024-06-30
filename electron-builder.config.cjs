@@ -28,9 +28,7 @@ const config = {
   mac: {
     target: "dmg",
     icon: "resources/icons/mac/icon.icns",
-  },
-  electronDownload: {
-    mirror: "https://npmmirror.com/mirrors/electron/",
+    minimumSystemVersion: "12.0",
   },
 };
 

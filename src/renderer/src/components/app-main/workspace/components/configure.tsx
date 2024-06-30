@@ -1,5 +1,4 @@
-import { useAtom } from "jotai";
-import { type PropsWithChildren, type UIEvent, useRef } from "react";
+import { type PropsWithChildren } from "react";
 
 import { useWorkspaceConfig } from "~/components/app-main/workspace/hooks/use-workspace-config.ts";
 import { Button } from "~/components/ui/button";
@@ -28,31 +27,14 @@ import {
   Tooltip,
 } from "~/components/ui/tooltip";
 import { cn } from "~/lib/utils";
-import { scrollAtom } from "../atom";
 import { formatMap, iconsMap } from "../constants";
 
 export function Configure() {
-  const [position, setPosition] = useAtom(scrollAtom);
-
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
-
-  const onScroll = (event: UIEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLDivElement;
-    setPosition({
-      top: target.scrollTop,
-      left: target.scrollLeft,
-    });
-  };
-
   const { formData, settingFormData, selectOutputDir } = useWorkspaceConfig();
 
   return (
-    <div
-      className={cn("min-h-0", {
-        "border-t": position?.top,
-      })}
-    >
-      <div className="h-full overflow-auto" ref={scrollAreaRef} onScroll={onScroll}>
+    <div className={cn("min-h-0")}>
+      <div className="h-full overflow-auto">
         <div className="p-4 space-y-8">
           <div className="flex w-full gap-2">
             <div className="grid gap-2">
@@ -253,22 +235,6 @@ export function Configure() {
                   settingFormData({
                     ...formData,
                     keepExif: checked,
-                  });
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="grid gap-2">
-            <Label>自动执行</Label>
-            <div className="flex gap-4 items-start justify-between">
-              <Description>添加图片后自动压缩</Description>
-              <Switch
-                checked={formData.autoExec}
-                onCheckedChange={(checked) => {
-                  settingFormData({
-                    ...formData,
-                    autoExec: checked,
                   });
                 }}
               />
