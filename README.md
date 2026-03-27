@@ -1,23 +1,48 @@
 <div align="center">
-  <img src="https://github.com/richhost/pixzip/blob/main/resources/icons/linux/icon.png?raw=true" height="256">
-  <h1 align="center">Pixzip</h1>
-  <h4 align="center">Compress images quickly & free!</h4>
+  <img src="https://github.com/richhost/pixzip-lite/blob/main/website/static/icon.webp?raw=true" height="256">
+  <h1 align="center">PixZip Lite</h1>
+  <h4 align="center">Easy to use batch image compression software.</h4>
 </div>
 
-> 重要说明：开源版本已进入缓慢开发阶段，我会将重点放到 [Pro](https://pixzip.cutepuppy.tech/) 上。它是一款需要付费的应用，一些新的规划都会在它身上得到应用，不排除后面会开发移除 Electron 版本的可能性（当然要卖得好哈哈）。过去的一段时间里，在我身上发生了一些不快的事情，我现在必须另谋出路，至少让自己吃饱饭。谢谢长期以来关注本项目的你们，祝大家在这个激烈的社会里获得内心平静。如果你想支持我，请购买 [Pro](https://pixzip.cutepuppy.tech/) 版本。🙏
+> If you want more features (compress by pixel percentage, image comparison, notification, BMP support), please use the [Pro](https://pixzip.cutelabs.in) version. 🙏
 
-## Pixzip
+## PixZip Lite
 
-`Pixzip` 是一款快速、免费的图片压缩软件，支持 JPG / PNG / WebP / AVIF 等主流格式，支持 Windows 10+，macOS 11+ 操作系统。
+PixZip Lite is a fast, free image compression software that supports mainstream formats such as JPG / PNG / WebP/ AVIF, and supports Windows 10+ and macOS 12+ operating systems.
 
-![Log](https://raw.githubusercontent.com/richhost/xiangsu.fun/main/static/1.webp)
+![Log](https://github.com/richhost/pixzip-lite/blob/main/website/static/screenshot.webp?raw=true)
 
-**如果觉得这个应用还不错，给个 [Star](https://github.com/richhost/pixzip) ⭐️ 支持一下吧 (^-^)**
+**If you think this app is pretty good, give it a [Star](https://github.com/richhost/pixzip) ⭐️ to show your support (^-^)**
 
-## 下载安装
+## Install
 
-[下载](https://github.com/richhost/pixzip/releases) 最新版本的 Pixzip。
+[Download](https://github.com/richhost/pixzip-lite/releases)
+
+## macOS
+![macOS can't open](https://raw.githubusercontent.com/richhost/pixzip-lite/refs/heads/main/static/macOS_damaged.webp)
+
+You can browser [https://ordonez.tv/2024/11/04/how-to-run-unsigned-apps-in-macos-15-1/](https://ordonez.tv/2024/11/04/how-to-run-unsigned-apps-in-macos-15-1/)
+
+## Build
+```bash
+pnpm i
+
+# macOS Apple Silicon
+pnpm build:mac:apple
+
+# macOS Intel
+pnpm build:mac:intel
+
+# Windows
+pnpm build:win
+```
 
 ## Thanks JetBrains
 
-[![JetBrains](https://raw.githubusercontent.com/richhost/pixzip/main/static/JetBrains.svg)](https://www.jetbrains.com/?from=pixzip)
+[![JetBrains](https://raw.githubusercontent.com/richhost/pixzip-lite/main/static/JetBrains.svg)](https://www.jetbrains.com/?from=pixzip)
+
+## Donate
+
+[![](https://storage.ko-fi.com/cdn/fullLogoKofi.png)](https://ko-fi.com/abieeyang)
+
+[![](https://static.afdiancdn.com/static/img/logo/logo.png)](https://afdian.com/a/abiee)

@@ -3,7 +3,7 @@ name: Build/release
 on:
   push:
     tags:
-      - "v*.*.*"
+      - 'v*.*.*'
 
 jobs:
   release:
@@ -11,21 +11,26 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-14, macos-12]
+        os: [macos-14, macos-12, windows-latest]
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - name: Install Python
+        uses: actions/setup-python@v5
         with:
-          version: 8
+          python-version: '3.10'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install Dependencies
         run: pnpm install
@@ -50,21 +55,14 @@ jobs:
 
       - name: upload artifact (macOS Apple Silicon)
         if: matrix.os == 'macos-14'
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ matrix.os }}
-          path: dist/*.dmg
-
-      - name: upload artifact (macOS Intel)
-        if: matrix.os == 'macos-12'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}
           path: dist/*.dmg
 
       - name: upload artifact (Windows)
         if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}
           path: dist/*.exe

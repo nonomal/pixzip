@@ -1,102 +1,54 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border select-none cursor-default;
-  }
-  body {
-    @apply text-foreground antialiased;
-  }
-}
+@import 'tailwindcss';
 
 * {
-  @apply cursor-default select-none;
+	@apply select-none cursor-default;
 }
 
-html,
+:root {
+	--w-sidebar-min: 180px;
+	--w-sidebar-max: 240px;
+	--w-config-min: 224px;
+	--w-config-max: 360px;
+	--h-title-bar: 36px;
+
+	--polygon-avif: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	--polygon-webp: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+	--polygon-jpg: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	--polygon-png: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+	--polygon-original: circle(50% at 50% 50%);
+
+	--bg-original: #a8a29e;
+	--bg-avif: #84cc16;
+	--bg-webp: #10b981;
+	--bg-jpg: #38bdf8;
+	--bg-png: #f97316;
+
+	text-autospace: normal;
+}
+
 body {
-  font-family: "Inter Variable", system-ui, —apple-system, Segoe UI, Rototo,
-    Helvetica, Arial, sans-serif;
-
-  --h-header: 46px;
-  --w-sidebar-min: 120px;
-  --w-sidebar-max: 240px;
+	@apply antialiased;
+	font-family: 'Rethink Sans', system-ui, sans-serif;
+	font-optical-sizing: auto;
 }
 
-img {
-  -webkit-user-drag: none;
+button,
+input,
+select,
+textarea {
+	-webkit-app-region: no-drag;
 }
 
-.draggable {
-  -webkit-app-region: drag;
+:where(input::placeholder) {
+	@apply text-[13px];
 }
 
-.no-drag {
-  -webkit-app-region: no-drag;
+@layer utilities {
+	.draggable {
+		-webkit-app-region: drag;
+	}
+
+	.no-drag {
+		-webkit-app-region: no-drag;
+	}
 }

@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-primary: #f14800;
+	--color-muted: #ff7940;
+}
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
+}
+
+@layer base {
+	body {
+		font-family:
+			'Bricolage Grotesque Variable',
+			system-ui,
+			—apple-system,
+			Segoe UI,
+			Rototo,
+			Helvetica,
+			Arial,
+			sans-serif;
+		@apply antialiased scroll-smooth;
+		text-autospace: normal;
+	}
+}

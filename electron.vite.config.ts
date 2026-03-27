@@ -1,7 +1,7 @@
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite';
-import react from '@vitejs/plugin-react'
-import { resolve } from 'path';
-import svgr from 'vite-plugin-svgr'
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import tailwindcss from '@tailwindcss/vite';
+import { resolve } from 'node:path';
 
 export default defineConfig({
 	main: {
@@ -25,10 +25,11 @@ export default defineConfig({
 		}
 	},
 	renderer: {
-		plugins: [react(), svgr()],
+		plugins: [svelte(), tailwindcss()],
 		resolve: {
 			alias: {
-				'~': resolve('src/renderer/src')
+				$: resolve('src/renderer/src'),
+				$lib: resolve('src/renderer/src/lib')
 			}
 		}
 	}

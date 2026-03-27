@@ -1,30 +1,28 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "useDefineForClassFields": true,
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["src/renderer/src/*"]
-    }
-  },
-  "include": ["src/renderer/src", "src/preload/*", "src/types/*.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"target": "ESNext",
+		"useDefineForClassFields": true,
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"checkJs": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"esModuleInterop": true,
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"strict": true,
+		"paths": {
+			"$lib": ["./src/renderer/src/lib"],
+			"$lib/*": ["./src/renderer/src/lib/*"]
+		}
+	},
+	"include": [
+		"./src/renderer/src/**/*.ts",
+		"./src/renderer/src/**/*.svelte",
+		"./src/preload/**/*.ts",
+		"./src/types/*.d.ts"
+	],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }

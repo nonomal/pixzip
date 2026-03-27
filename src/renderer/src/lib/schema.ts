@@ -1,38 +1,38 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-const preprocessNumber = z.preprocess((val) => {
-  return Object.is(Number(val), Number.NaN) ? undefined : Number(val);
-}, z.number().or(z.undefined()));
+type Space = {
+	id: string;
+	name: string;
+	width?: number;
+	height?: number;
+	suffix: string;
+	format: Format;
+	level: number;
+	originalOutput: boolean;
+	outputDir?: string;
+	keepExif: boolean;
+};
+
+type Format = 'original' | 'jpg' | 'jpeg' | 'png' | 'webp' | 'avif';
 
 const formatSchema = z
-  .literal("original")
-  .or(z.literal("jpg"))
-  .or(z.literal("png"))
-  .or(z.literal("webp"))
-  .or(z.literal("avif"))
-  .or(z.literal("jpeg"));
+	.literal('original')
+	.or(z.literal('jpg'))
+	.or(z.literal('jpeg'))
+	.or(z.literal('png'))
+	.or(z.literal('webp'))
+	.or(z.literal('avif'));
 
-const baseSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  icon: z.string(),
-  width: preprocessNumber,
-  height: preprocessNumber,
-  suffix: z.string(),
-  format: formatSchema,
-  level: z.number().min(1).max(9).default(1),
-  /**
-   * auto execution
-   *
-   * if true, the command will be executed automatically when the add images
-   */
-  autoExec: z.boolean().default(false),
-  originalOutput: z.boolean().default(true),
-  outputDir: z.string().default(""),
-  keepExif: z.boolean().default(false),
+export const formDataSchema = z.object({
+	id: z.string(),
+	name: z.string(),
+	width: z.number().or(z.undefined()),
+	height: z.number().or(z.undefined()),
+	suffix: z.string(),
+	format: formatSchema,
+	level: z.number(),
+	originalOutput: z.boolean(),
+	outputDir: z.string().optional(),
+	keepExif: z.boolean()
 });
-
-export const FormDataSchema = baseSchema.omit({ id: true });
-export const WorkspaceSchema = baseSchema;
-
-export type ConfigFormData = z.infer<typeof FormDataSchema>;
+export type SpaceFormData = z.infer<typeof formDataSchema>;
